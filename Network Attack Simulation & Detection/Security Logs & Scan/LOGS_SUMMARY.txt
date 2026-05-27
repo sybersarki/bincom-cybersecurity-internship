@@ -1,0 +1,33 @@
+SECURITY LOGS SUMMARY
+=====================
+
+File: apache_access_logs.txt
+Description: Last 2,000 entries from Apache access log
+Contains: Web attacks (Nikto scans, Hydra brute force, SQL injection, XSS)
+Total Events in Full Log: 21,568
+Attack Source: 192.168.2.1 (Kali Linux)
+
+File: apache_error_logs.txt
+Description: Last 1,000 entries from Apache error log
+Contains: Server errors, ModSecurity alerts, file not found errors
+
+File: cowrie_honeypot_logs.json
+Description: Complete Cowrie SSH honeypot log
+Contains: 78 SSH attack attempts with usernames, passwords, source IPs
+Format: JSON (one event per line)
+Attack Source: 192.168.2.1 (Kali Linux)
+
+ATTACK STATISTICS:
+- Total Web Requests Logged: 21,568
+- Total SSH Attempts Logged: 78
+- Attack Tools Detected: Nmap, Nikto, Hydra, curl
+- SQL Injection Attempts: Multiple
+- XSS Attempts: Multiple
+- Brute Force Success: Yes (weak credentials)
+- All attacks detected: 100%
+
+DEFENSE MECHANISMS:
+- ModSecurity WAF: Active
+- Cowrie Honeypot: Operational
+- ELK Stack Monitoring: Deployed
+- Real-time Dashboards: 2 (DVWA + Cowrie)

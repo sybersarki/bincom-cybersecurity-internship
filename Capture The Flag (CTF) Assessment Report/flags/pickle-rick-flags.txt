@@ -1,0 +1,32 @@
+===============================================
+PICKLE RICK CTF - FLAGS
+===============================================
+
+Student: Umeh Paul
+Date: January 18, 2026
+Platform: TryHackMe
+Room: Pickle Rick
+Target IP: 10.81.178.15
+
+CREDENTIALS FOUND:
+------------------
+Username: R1ckRul3s
+Password: Wubbalubbadubdub
+
+FLAG 1 - First Ingredient:
+---------------------------
+Location: /var/www/html/Sup3rS3cretPickl3Ingred.txt
+Flag: [mr. meeseek hair]
+
+FLAG 2 - Second Ingredient:
+----------------------------
+Location: /home/rick/"second ingredients"
+Flag: [1 jerry tear]
+
+FLAG 3 - Third Ingredient:
+---------------------------
+Location: /root/3rd.txt
+Flag: [fleeb juice]
+
+TOTAL FLAGS: 3/3 ✅
+===============================================

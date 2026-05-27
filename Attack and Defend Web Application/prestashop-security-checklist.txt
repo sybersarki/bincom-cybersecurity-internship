@@ -1,0 +1,173 @@
+==============================================
+==============================================
+PRESTASHOP SECURITY CHECKLIST
+Student Name: Umeh Paul
+Date: 17-01-2026
+PrestaShop IP: 192.168.2.129
+PrestaShop Version: 8.1.2
+===============================================
+
+SECTION 1: CONFIGURATION SECURITY
+----------------------------------
+[✅] 1.1 Admin directory renamed from default
+    Current Status: PASS
+    Evidence: Admin folder renamed to 'admin-secret'
+    Screenshot: Login URL shows /admin-secret/
+
+[✅] 1.2 Debug mode disabled
+    Initial Status: FAIL - Debug mode was ENABLED
+    After Fix: PASS - Debug mode disabled
+    Evidence: Screenshot 02-debug-mode-DISABLED.png
+    Risk Level: HIGH (before fix)
+
+[✅] 1.3 Error display to users disabled
+    Current Status: PASS
+    Evidence: Debug mode OFF prevents error display
+    Screenshot: 02-debug-mode-DISABLED.png
+
+[⚠️] 1.4 HTTPS configured
+    Current Status: NOT IMPLEMENTED
+    Evidence: Site runs on HTTP (not HTTPS)
+    Recommendation: Install SSL certificate for production
+    Note: Acceptable for lab environment
+
+
+SECTION 2: AUTHENTICATION SECURITY
+-----------------------------------
+[✅] 2.1 Default admin credentials changed
+    Current Status: PASS
+    Evidence: Changed from default during installation
+    Admin email: student@test.local
+    Password: Complex password set (NewPass123!)
+
+[✅] 2.2 Strong password policy enforced
+    Current Status: PASS
+    Evidence: Passwords require letters, numbers, symbols
+    Minimum length enforced
+
+[⚠️] 2.3 Login attempt limits configured
+    Current Status: PARTIAL
+    Evidence: ModSecurity rate limiting provides protection
+    WAF Rule 9006-9007: 100 requests per minute limit
+    Recommendation: Configure PrestaShop built-in limits
+
+
+SECTION 3: FILE SECURITY
+-------------------------
+[✅] 3.1 Install folder deleted after setup
+    Current Status: PASS
+    Evidence: Verified via command: ls -la /var/www/html/prestashop/
+    Install directory not present
+    Screenshot: 04-file-permissions.png
+
+[✅] 3.2 File permissions set correctly (755/644)
+    Current Status: PASS
+    Evidence: Directories: 755, Files: 644
+    Commands used:
+      - find /path -type d -exec chmod 755 {} \;
+      - find /path -type f -exec chmod 644 {} \;
+    Screenshot: 04-file-permissions.png
+
+[✅] 3.3 Sensitive files protected
+    Current Status: PASS
+    Evidence: Config files owned by www-data
+    Not accessible via web browser
+
+
+SECTION 4: DATABASE SECURITY
+-----------------------------
+[✅] 4.1 Database prefix changed from default 'ps_'
+    Current Status: PASS
+    Evidence: All tables renamed to 'sec_' prefix
+    Method: MySQL RENAME TABLE commands (300+ tables)
+    Verification: SHOW TABLES LIKE 'sec_%';
+    Screenshot: 05-database-prefix.png
+
+[✅] 4.2 Strong database credentials used
+    Current Status: PASS
+    Evidence: 
+      - Database user: prestashop_user (not root)
+      - Password: PrestaPass123! (complex)
+      - Not default credentials
+
+[✅] 4.3 Remote database access restricted
+    Current Status: PASS
+    Evidence: MySQL bound to 127.0.0.1 only
+    Verification: netstat -tulpn | grep mysql
+    Only localhost connections allowed
+
+
+SECTION 5: UPDATE SECURITY
+---------------------------
+[✅] 5.1 PrestaShop updated to latest version
+    Current Status: PASS
+    Evidence: Running version 8.1.2 (latest stable)
+    Verified via admin dashboard footer
+
+[⚠️] 5.2 All modules updated
+    Current Status: REVIEW NEEDED
+    Evidence: Module Manager shows update status
+    Screenshot: 03-modules-status.png
+    Note: Some modules may have updates available
+
+[✅] 5.3 Unused modules disabled/removed
+    Current Status: PASS
+    Evidence: Only essential modules enabled
+    Verified via admin Module Manager
+
+
+SECTION 6: WEB APPLICATION FIREWALL
+------------------------------------
+[✅] 6.1 WAF installed and configured
+    Current Status: PASS
+    Evidence: ModSecurity with OWASP CRS installed
+    Custom rules: /etc/modsecurity/custom-prestashop-waf.conf
+
+[✅] 6.2 SQL Injection protection active
+    Current Status: PASS
+    Evidence: WAF blocks SQL injection attempts
+    Test result: 403 Forbidden
+    Screenshot: 11-waf-blocks-sqli.png
+
+[✅] 6.3 XSS protection active
+    Current Status: PASS
+    Evidence: WAF blocks XSS attempts
+    Test result: 403 Forbidden
+    Screenshot: 12-waf-blocks-xss.png
+
+[✅] 6.4 Rate limiting configured
+    Current Status: PASS
+    Evidence: 100 requests per minute limit
+    WAF Rules: 9006, 9007
+
+
+===============================================
+OVERALL SECURITY SCORE
+===============================================
+
+Total Items Checked: 19
+Passed (✅): 16
+Partial/Warning (⚠️): 3
+Failed (❌): 0
+
+Security Posture: GOOD
+Risk Level: LOW
+
+Items Requiring Attention:
+1. HTTPS implementation (production requirement)
+2. Module updates review
+3. Additional login attempt limits
+
+Recommendations:
+- Deploy SSL certificate before production
+- Review and update all modules
+- Enable PrestaShop native brute force protection
+- Continue monitoring WAF logs
+- Regular security assessments
+
+
+===============================================
+CHECKLIST COMPLETED BY: Umeh Paul
+DATE: January 17, 2026
+SIGNATURE: ____________________
+===============================================

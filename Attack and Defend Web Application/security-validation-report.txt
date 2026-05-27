@@ -1,0 +1,11 @@
+DEBUG MODE ENABLED - HIGH RISK
+------------------------------------
+Finding: Debug mode was enabled in production
+Impact: Exposes sensitive system information to attackers including:
+  - Internal file paths
+  - Database queries and structure
+  - Framework version details
+  - Stack traces with code snippets
+  - Configuration details
+Evidence: Screenshot showing "Debug mode: Yes"
+Status: REMEDIATED - Disabled via admin panel (Advanced Parameters → Performance)

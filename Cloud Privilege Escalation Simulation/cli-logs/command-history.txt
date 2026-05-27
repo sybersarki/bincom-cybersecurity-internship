@@ -1,0 +1,33 @@
+   46  mkdir -p ~/Desktop/Day5-Assignment/{screenshots,reports,cli-logs}\ncd ~/Desktop/Day5-Assignment
+   47  ls
+   48  clear
+   49  sudo apt update
+   50  sudo apt install awscli -y
+   51  aws --version
+   52  aws configure
+   53  aws sts get-caller-identity
+   54  aws iam list-attached-user-policies --user-name junior-dev
+   55  aws iam create-user --user-name test-user
+   56  aws iam attach-user-policy \\n  --user-name junior-dev \\n  --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
+   57  clear
+   58  aws iam list-attached-user-policies --user-name junior-dev
+   59  aws iam create-user --user-name backdoor-admin
+   60  clear
+   61  history | tail -20 > ~/Desktop/Day5-Assignment/cli-logs/command-history.txt
+   62  cat ~/Desktop/Day5-Assignment/cli-logs/command-history.txt
+   63  aws iam detach-user-policy \\n  --user-name junior-dev \\n  --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
+   64  aws iam detach-user-policy \\n  --user-name junior-dev \\n  --policy-arn arn:aws:iam::$(aws sts get-caller-identity --query Account --output text):policy/DangerousIAMPolicy
+   65  cat > ~/Desktop/Day5-Assignment/least-privilege-policy.json << 'EOF'\n{\n  "Version": "2012-10-17",\n  "Statement": [\n    {\n      "Sid": "AllowS3ReadOnly",\n      "Effect": "Allow",\n      "Action": [\n        "s3:GetObject",\n        "s3:ListBucket"\n      ],\n      "Resource": [\n        "arn:aws:s3:::*"\n      ]\n    },\n    {\n      "Sid": "AllowEC2ReadOnly",\n      "Effect": "Allow",\n      "Action": [\n        "ec2:DescribeInstances",\n        "ec2:DescribeImages"\n      ],\n      "Resource": "*"\n    },\n    {\n      "Sid": "DenyAllIAM",\n      "Effect": "Deny",\n      "Action": "iam:*",\n      "Resource": "*"\n    }\n  ]\n}\nEOF
+   66  cat ~/Desktop/Day5-Assignment/least-privilege-policy.json
+   67  aws iam attach-user-policy \\n  --user-name junior-dev \\n  --policy-arn arn:aws:iam::$(aws sts get-caller-identity --query Account --output text):policy/DeveloperLeastPrivilege
+   68  aws iam list-attached-user-policies --user-name junior-dev
+   69  aws iam list-attached-user-policies --user-name junior-dev --profile admin
+   70  aws iam attach-user-policy \\n  --user-name junior-dev \\n  --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
+   71  ls
+   72  cd ~/Desktop/Day3-Assignment/reports
+   73  cd ~/Desktop/Day5-Assignment/reports
+   74  nano reports/Day5-Vulnerability-Fix-Report.txt
+   75  ls
+   76  cat Day5-Vulnerability-Fix-Report.txt
+   77  nano Assignment-Summary.txt
+   78  nano Cleanup-Documentation.txt
