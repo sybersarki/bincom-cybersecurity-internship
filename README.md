@@ -32,7 +32,7 @@ Performed a full vulnerability assessment using Nmap (`--script=vuln`) against a
 
 **Tools:** Nmap 7.98, Metasploit Framework, Wireshark
 
-📁 [`01-vulnerability-remediation/`](./Vulnerability_Remediation_Report/)
+📁 [`01-vulnerability-remediation/`](./Vulnerability%20Remediation%20Report/)
 
 ---
 
@@ -52,7 +52,7 @@ Simulated both attacker and defender roles on a PrestaShop web application. Carr
 
 **Tools:** Hydra, ModSecurity, Apache, Nikto
 
-📁 [`02-web-attack-and-defense/`](./02-web-attack-and-defense/)
+📁 [`02-web-attack-and-defense/`](./Attack%20and%20Defend%20Web%20Application/)
 
 ---
 
@@ -71,7 +71,7 @@ Analysed over 21,000 Apache access log entries and 1,000 error log entries to id
 
 **Tools:** Apache log analysis, manual review, incident report writing
 
-📁 [`03-log-analysis-attack-detection/`](./03-log-analysis-attack-detection/)
+📁 [`03-log-analysis-attack-detection/`](./Log%20Analysis%20and%20Attack%20Detection/)
 
 ---
 
@@ -94,7 +94,7 @@ Simulated a real-world cloud privilege escalation scenario. Started as a low-pri
 
 **Tools:** AWS CLI, IAM policy editor, `aws sts`, `aws iam`
 
-📁 [`04-aws-iam-privilege-escalation/`](./04-aws-iam-privilege-escalation/)
+📁 [`04-aws-iam-privilege-escalation/`](./Cloud%20Privilege%20Escalation%20Simulation/)
 
 ---
 
@@ -113,7 +113,7 @@ Completed the Pickle Rick CTF room on TryHackMe, which involves exploiting a web
 
 **Tools:** Browser dev tools, command injection, Linux enumeration
 
-📁 [`05-ctf-pickle-rick/`](./05-ctf-pickle-rick/)
+📁 [`05-ctf-pickle-rick/`](./Capture%20The%20Flag%20(CTF)%20Assessment.../)
 
 ---
 
@@ -142,7 +142,7 @@ The most comprehensive project — a full network attack and defence simulation 
 
 **Tools:** Nmap, Nikto, Hydra, Cowrie, ModSecurity, ELK Stack, Kibana, DVWA, Wireshark (`.pcapng` capture included)
 
-📁 [`06-network-attack-simulation/`](./06-network-attack-simulation/)
+📁 [`06-network-attack-simulation/`](./Network%20Attack%20Simulation%20%26%20Dete.../)
 
 ---
 
