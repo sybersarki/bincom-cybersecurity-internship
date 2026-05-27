@@ -32,7 +32,7 @@ Performed a full vulnerability assessment using Nmap (`--script=vuln`) against a
 
 **Tools:** Nmap 7.98, Metasploit Framework, Wireshark
 
-📁 [`01-vulnerability-remediation/`](./01-vulnerability-remediation/)
+📁 [`01-vulnerability-remediation/`](./Vulnerability_Remediation_Report/)
 
 ---
 
